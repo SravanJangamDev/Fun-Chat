@@ -1,36 +1,38 @@
 # Import socket module
 import socket
+import multiprocessing
+
+HOST = ""
+PORT = 12347
 
 
-def Main():
-    host = "127.0.0.1"
-    port = 12345
-
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.connect((host, port))
-
-    # message you send to server
+def receive_from_server(conn) -> None:
     while True:
-        message = input("Message: ")
-        # message sent to server
-        s.send(message.encode("ascii"))
+        msg = conn.recv(1024).decode()
+        if msg:
+            print(msg)
 
-        # message received from server
-        # data = s.recv(1024)
 
-        # print the received message
-        # here it would be a reverse of sent message
-        # print("Received from the server :", str(data.decode("ascii")))
+def main():
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.connect((HOST, PORT))
 
-        # ask the client whether he wants to continue
-        ans = input("\nDo you want to continue(y/n) :")
-        if ans == "y":
-            continue
-        else:
-            break
-    # close the connection
-    s.close()
+    username = input("Enter Username: ")
+    s.sendall(username.encode())
+    try:
+        p = multiprocessing.Process(target=receive_from_server, args=(s,))
+        p.start()
+
+        while True:
+            message = input()
+            if message:
+                s.sendall(message.encode())
+                print(f"You: {message}")
+    except Exception as e:
+        print(f"Exception occured. {e}")
+    finally:
+        s.close()
 
 
 if __name__ == "__main__":
-    Main()
+    main()
