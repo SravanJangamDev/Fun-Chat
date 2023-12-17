@@ -1,0 +1,7 @@
+PUBSUB_BASEDIR = "/home/sravan/Desktop/Project/Fun-Chat/db"
+PUBSUB_MAILBOX = f"{PUBSUB_BASEDIR}/mailbox"
+PUBSUB_SUBDIR = f"{PUBSUB_BASEDIR}/subscriptionbox"
+PUBSUB_DEBUG_MODE = True
+PUBSUB_ERROR_LOG = f"{PUBSUB_BASEDIR}/.log.json"
+PUBSUB_HOST = "127.0.0.1"
+PUBSUB_PORT = 3000

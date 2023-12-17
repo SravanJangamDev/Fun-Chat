@@ -1,41 +1,27 @@
-* Users authenticate with a username and password
-        - These are backed-up along with all messages
-        - Passwords are hashed, salted, and hashed again for secure storage
-        - Your display-name is also your username =
-    (this means no-one can impersonate you unless you delete your account, which is also a feature)
+Fun-Chat:
+Idea is to learn more about web-sockets, Javascript and MangoDB
 
-* Messages are timestamped 
-        - This happens server-side, so it's impossible to fake timestamps
+Tech stack:
+Frontend:
+    - HTML, CSS, Javascript
 
-* Backups of user accounts and all messages happen every 2 minutes
-        - This is just the default, if you want, you can change the timer, or disable backups alltogether!
+Backend:
+    - Python websockets
 
-* Customizable client formatting
-        - You can display the chat in any format you want (requires forking the client)
-
-* Object-oriented, readable code
-        - Alter the server or client in any way you like
-
-* Client commands
-        - Starting with '/', these commands allow you to re-view old messages, server backup logs, and more!
+DB:
+    - Mongdb
 
 
-Structure:
-User = {
-        "username": "",
-        "password": "",
-        "full name": "",
-        "profile_image": "https://image.png",
-        "status": "Active|blocked|...."
-        "phone number": "",
-        "email": ""
-}
+Flow:
+signup page/
+    username
+    password
+    display name
 
-Message = {
-        "ID": "597515159",
-        "text": "Helo",
-        "url": "https://image.png",
-        "time": "",
-        "sender": "",
-        "status": "intiated|sent|....."
-}
+mainchat:
+    personal-topic chat:
+        - {
+            "send_to_persons": ["vinay", "rahul],
+            "send_to_grps": []
+        }
+
