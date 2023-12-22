@@ -3,7 +3,7 @@ from sys import stderr, _getframe
 from datetime import datetime
 import json
 import os
-from typing import Union, Tuple, Any, Optional, Dict, List
+from typing import Optional
 from uuid import uuid4
 from config import PUBSUB_DEBUG_MODE, PUBSUB_ERROR_LOG
 

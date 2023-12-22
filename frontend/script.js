@@ -1,21 +1,27 @@
-serverURL = "ws://localhost:3000";
+serverURL = "ws://localhost:8080/chat";
 var socket = null
-var user_id = ""
-var selected_user = ""
 
 function showSignupPage() {
   document.getElementById("signup-page").style.display = "block";
   document.getElementById("login-page").style.display = "none";
+  document.getElementById("add-contact-page").style.display = "none";
 }
 
 function showLoginPage() {
   document.getElementById("signup-page").style.display = "none";
   document.getElementById("login-page").style.display = "block";
+  document.getElementById("add-contact-page").style.display = "none";
 }
 
 function showChatPage() {
   document.getElementById("signup-page").style.display = "none";
   document.getElementById("login-page").style.display = "none";
+  document.getElementById("add-contact-page").style.display = "none";
+}
+function showAddContactPage() {
+  document.getElementById("signup-page").style.display = "none";
+  document.getElementById("login-page").style.display = "none";
+  document.getElementById("add-contact-page").style.display = "block";
 }
 
 window.onload = function () {
@@ -72,24 +78,42 @@ function fillMessageBox(messages, append) {
   }
   messages.forEach(message => {
     const messageBox = document.createElement("div");
+    const user_id = getUserID()
     messageBox.classList.add("message-box")
 
     const messageElement = document.createElement("span");
     messageElement.classList.add("message")
     messageElement.innerText = message.message;
     messageElement.id = message.msg_id
-    if (message.msg_from == user_id){
-      messageBox.classList.add("message-send")
-      messageElement.classList.add("text-send")
-    } else{
+    if (message.msg_to == user_id){
       messageBox.classList.add("message-recv")
       messageElement.classList.add("text-recv")
+    } else{
+      messageBox.classList.add("message-send")
+      messageElement.classList.add("text-send")
     }
 
     messageBox.appendChild(messageElement)
     chatBox.appendChild(messageBox);
   });
   chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+function setSelectedContact(contact){
+  console.log(contact)
+  document.getElementById("selected-user").value = contact;
+}
+
+function getSelectedContact() {
+  return document.getElementById("selected-user").value;
+}
+
+function getUserID() {
+  return document.getElementById("profile-name").value;
+}
+
+function setUserID(userID) {
+  document.getElementById("profile-name").value = userID;
 }
 
 function fillContactBox(contacts, append) {
@@ -110,6 +134,9 @@ function fillContactBox(contacts, append) {
     name.classList.add("contact-name")
     name.innerText = contact
     name.id = contact
+    name.addEventListener("click", (event) => {
+      selectContact(contact);
+    });
 
     contactBox.appendChild(image)
     contactBox.appendChild(name)
@@ -124,27 +151,37 @@ function handleServerResponse(data) {
     console.log(data)
     sendRequest({"action": "get_details"})
     sendRequest({"action": "get_chat"})
+    showChatPage();
   }
   else if (action == "login") {
     console.log(data)
     sendRequest({"action": "get_details"})
     sendRequest({"action": "get_chat"})
+    showChatPage();
   }
   else if (action == "get_details") {
     console.log(data)
     details = data.data
     const contacts = details.contacts
+    setSelectedContact(contacts[0])
     fillContactBox(contacts, false)
   }
   else if (action == "get_chat") {
     const chats = data.data
     console.log(chats)
-    for(let name in chats) {
-        selected_user = name
-        console.log(name)
-        console.log(chats[name])
+    let messages = []
+    const contact = getSelectedContact()
+    if (contact != null || contact != "") {
+      messages = chats[contact]
+    }
+    else{
+      for(let name in chats) {
+        setSelectedContact(name)
+        messages = chats[name]
+        break;
       }
-    const messages = chats[selected_user]
+    }
+    
     fillMessageBox(messages, false)
     // 
   }
@@ -161,7 +198,8 @@ function handleServerResponse(data) {
 function connectToServer(action, username, password, displayname) {
   socket = new WebSocket(serverURL); // Replace with your server address
 
-  user_id = username
+  setUserID(username)
+  document.getElementById("profile-name").innerText = username
   socket.addEventListener("open", (event) => {
     console.log("WebSocket connection opened:", event);
     let data = {
@@ -210,19 +248,32 @@ function sendMessage() {
   const data = {
     "action": "message",
     "message": message,
-    "msg_to": selected_user
+    "msg_to": getSelectedContact()
   }
+  console.log(data)
   fillMessageBox([data], true)
   sendRequest(data)
 }
 
 function selectContact(contact) {
-  selected_user = contact
+  setSelectedContact(contact)
   const data = {
     "action": "get_chat",
-    "contacts": [selected_user]
+    "contacts": [contact]
   }
-  sendRequest(data)
+  console.log(data);
+  sendRequest(data);
 }
 
-// connectToServer("login", "sravan", "sravan", "")
+function addContact() {
+  let contact = document.getElementById("add-contact-username").value;
+  const data = {
+    "action": "add_contact",
+    "contacts": [contact]
+  }
+  sendRequest(data);
+  showChatPage();
+  fillContactBox([contact], true);
+}
+
+// connectToServer("login", "Sravan", "sravan", "")

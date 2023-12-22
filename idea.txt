@@ -1,5 +1,14 @@
 Fun-Chat:
 Idea is to learn more about web-sockets, Javascript and MangoDB
+1. Learn websockets
+2. Learn python async programming
+3. Learn SQLAlchemy and SQL database
+4. Learn Javascript basics
+5. Revise HTML, CSS
+6. Learn Pytest module
+7. Build Email based login
+8. Nginx
+9. Redis
 
 Tech stack:
 Frontend:
@@ -9,7 +18,10 @@ Backend:
     - Python websockets
 
 DB:
-    - Mongdb
+    - SQLAlchemy database.
+
+Testing:
+    - Pytest
 
 
 Flow:

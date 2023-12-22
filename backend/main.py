@@ -75,8 +75,8 @@ def is_registered_user(user_id: str) -> bool:
     return False
 
 
-def invalid_password(user_id: str, password: str) -> bool:
-    # authenticate the user
+def is_invalid_password(actual_pwd: str, password: str) -> bool:
+    # return actual_pwd != password
     return False
 
 
@@ -177,6 +177,9 @@ async def handle_incoming_requests_from_client(
 
 
 async def signup(user_id, password, displayname, displaypicture) -> User:
+    if is_registered_user(user_id):
+        raise ClientException("User is Already registered.")
+
     user = User(user_id=user_id, displayname=displayname, displaypicture=displaypicture)
     details = user.details()
     details["password"] = password
@@ -187,10 +190,14 @@ async def signup(user_id, password, displayname, displaypicture) -> User:
 
 async def login(user_id, password) -> User:
     global users
-    if invalid_password(user_id, password):
-        raise ClientException("Invalid credentials.")
     user = users.get(user_id)
     if not user:
+        raise ClientException("User not found.")
+
+    details = user.details()
+    print(details)
+    actual_pwd = details.get("password", "")
+    if is_invalid_password(actual_pwd, password):
         raise ClientException("Invalid credentials.")
 
     return user
@@ -202,7 +209,6 @@ async def handle_connection(websocket: WebSocketServerProtocol, path: str):
     msg = ""
     try:
         data = json.loads(await websocket.recv())
-        print(data)
         action = data.get("action", "").lower()
         user_id = data.get("user_id", "")
         displayname = data.get("displayname", "")
@@ -376,8 +382,37 @@ subscription table:
 }
 
 {
-    "action": "get_chats",
+    "action": "get_chat",
     "contacts": []
 }
+
+"""
+"""
+Message structure:
+{
+    "action": "message",
+    "message": "20 20 adali ika",
+    "msg_from": "Sravan",
+    "msg_to": "Bindu",
+    "msg_id": "7bf13641-74ef-42e6-9185-bb8354bfdb9e",
+    "time": "",
+}
+
+User structure:
+{
+    "user_id": "Bindu",
+    "displayname": "Bindu",
+    "displaypicture": "",
+    "contacts": [
+        {
+            "nickname": Bindu,
+            "number": "7234738487",
+            "status": "",
+        }
+    ],
+    "groups": [],
+    "password": "bindu"
+}
+
 
 """

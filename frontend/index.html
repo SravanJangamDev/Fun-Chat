@@ -13,11 +13,13 @@
     <div class="app-name">
       Fun Chat
     </div>
-    <div class="username">
+    <div class="username" id="profile-name">
       Jangam Sravan
     </div>
+    <span id="selected-user" style="display: none;">""</span>
     <div class="user-photo">
-      <img class="profile-image" src="images/user_profile.png" alt="User Photo" width="50px" height="50px">
+      <img class="profile-image" src="images/user_profile.png" alt="User Photo"
+        width="50px" height="50px">
     </div>
   </header>
   <div class="chat-container">
@@ -26,19 +28,18 @@
         <!-- User list content goes here -->
         <ul id="contacts-list">
           <li class="contact">
-            <img class="contact-photo" src="images/user_profile.png" width="30px" height="30px">
-            <span class="contact-name">Bindu</span>
-          </li>
-          <li class="contact">
-            <img class="contact-photo" src="images/user_profile.png" width="30px" height="30px">
-            <span class="contact-name">Bindu</span>
-          </li>
-          <li class="contact">
-            <img class="contact-photo" src="images/user_profile.png" width="30px" height="30px">
-            <span class="contact-name">Bindu</span>
+            <img class="contact-photo" src="images/user_profile.png"
+              width="30px" height="30px">
+            <span class="contact-name">Sravan</span>
           </li>
           <!-- Add more users as needed -->
         </ul>
+        <div class="left-bottom-corner">
+          <span class="span-button" onclick="showAddContactPage()">Add
+            contact</span>
+          <!-- <span class="plus-button">+</span> -->
+        </div>
+
       </div>
 
     </div>
@@ -52,7 +53,8 @@
         </div>
         <div class="message-box message-recv">
           <!-- <span class="bold">Bindu:</span> -->
-          <span class="message text-recv"> I'm good, thanks! How about you? </span>
+          <span class="message text-recv"> I'm good, thanks! How about you?
+          </span>
         </div>
         <!-- Add more chat messages as needed -->
       </div>
@@ -69,23 +71,27 @@
       <h2 class="text-align-center">Welcome to Fun-Chat!</h2>
       <div class="input-group">
         <label for="username">Username:</label>
-        <input type="text" id="signup-username" name="username" placeholder="Enter your username">
+        <input type="text" id="signup-username" name="username"
+          placeholder="Enter your username">
       </div>
 
       <div class="input-group">
         <label for="password">Password:</label>
-        <input type="password" id="signup-password" name="password" placeholder="Enter your password">
+        <input type="password" id="signup-password" name="password"
+          placeholder="Enter your password">
       </div>
 
       <div class="input-group">
         <label for="displayName">Display Name:</label>
-        <input type="text" id="signup-displayname" name="displayName" placeholder="Enter your display name">
+        <input type="text" id="signup-displayname" name="displayName"
+          placeholder="Enter your display name">
       </div>
       <div class="input-group text-align-center">
         <button onclick="signup()">Sign Up</button>
       </div>
       <div class="input-group">
-        <span class="small-text">Alread has account? <span class="link" onclick="showLoginPage()">Login</span></span>
+        <span class="small-text">Alread has account? <span class="link"
+            onclick="showLoginPage()">Login</span></span>
       </div>
 
 
@@ -97,24 +103,42 @@
       <h2 class="text-align-center">Welcome to Fun-Chat!</h2>
       <div class="input-group">
         <label for="username">Username:</label>
-        <input type="text" id="login-username" name="username" placeholder="Enter your username">
+        <input type="text" id="login-username" name="username"
+          placeholder="Enter your username">
       </div>
 
       <div class="input-group">
         <label for="password">Password:</label>
-        <input type="password" id="login-password" name="password" placeholder="Enter your password">
+        <input type="password" id="login-password" name="password"
+          placeholder="Enter your password">
       </div>
 
       <div class="input-group text-align-center">
         <button onclick="login()">Login</button>
       </div>
       <div class="input-group">
-        <span class="small-text">Don't have account? <span class="link" onclick="showSignupPage()">Sign
+        <span class="small-text">Don't have account? <span class="link"
+            onclick="showSignupPage()">Sign
             up</span></span>
       </div>
 
 
     </div>
+  </div>
+  <div class="add-contact-container" id="add-contact-page">
+    <div class="add-contact-container-box">
+      <span class="close-button" id ="contact-close-btn" onclick="showChatPage()">X</span>
+      <h2 class="text-align-center">Add Contact!</h2>
+      <div class="input-group">
+        <label for="username">Username:</label>
+        <input type="text" id="add-contact-username" name="username"
+          placeholder="Enter contact username">
+      </div>
+      <div class="input-group text-align-center">
+        <button onclick="addContact()">Add contact</button>
+      </div>
+    </div>
+
   </div>
 
   <script src="script.js"></script>

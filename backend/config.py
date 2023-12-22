@@ -1,4 +1,4 @@
-PUBSUB_BASEDIR = "/home/sravan/Desktop/Project/Fun-Chat/db"
+PUBSUB_BASEDIR = "/home/jangam/Desktop/Project/Fun-Chat/db"
 PUBSUB_MAILBOX = f"{PUBSUB_BASEDIR}/mailbox"
 PUBSUB_SUBDIR = f"{PUBSUB_BASEDIR}/subscriptionbox"
 PUBSUB_DEBUG_MODE = True
