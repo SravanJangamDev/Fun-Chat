@@ -42,9 +42,7 @@ class UserContacts(Base):
     nickname = Column(String(255), nullable=False)
     contact_number = Column(String(10), nullable=False)
     status = Column(String(255))
-    contact_of = Column(
-        String(10), ForeignKey("users.user_id"), nullable=False
-    )
+    contact_of = Column(String(10), ForeignKey("users.user_id"), nullable=False)
     timestamp = Column(DateTime, default=func.now(), onupdate=func.now())
 
     contact_list_user = relationship("Users", foreign_keys=[user_id])
@@ -88,9 +86,7 @@ class ChatGroups(Base):
 class UserGroups(Base):
     __tablename__ = "user_groups"
 
-    group_id = Column(
-        Integer, ForeignKey("chat_groups.group_id"), primary_key=True
-    )
+    group_id = Column(Integer, ForeignKey("chat_groups.group_id"), primary_key=True)
     user_id = Column(String(10), ForeignKey("users.user_id"), primary_key=True)
     access_level = Column(String(255))
     joined_on = Column(DateTime, default=func.now())

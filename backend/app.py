@@ -27,9 +27,7 @@ def is_invalid_password(actual_pwd: str, password: str) -> bool:
     return actual_pwd != password
 
 
-async def send_resp_to_client(
-    client: WebSocketServerProtocol, resp: dict
-) -> None:
+async def send_resp_to_client(client: WebSocketServerProtocol, resp: dict) -> None:
     try:
         await client.send(json.dumps(resp))
     except Exception as e:
@@ -102,10 +100,14 @@ async def get_users_chat(user_id: str, contact_number: str) -> list:
 
 async def add_contact(user_id, req_body: dict) -> dict:
     nickname = req_body.get("nickname", "")
-    contact_number = req_body.get("contact_number")
+    contact_number = req_body.get("contact_number", "")
     contact = db.create_user_contact(
         user_id, nickname=nickname, contact_number=contact_number
     )
+    if not db.is_user_contact_exists(contact_number, user_id):
+        db.create_user_contact(
+            contact_number, nickname=contact_number, contact_number=user_id
+        )
     return contact.details()
 
 

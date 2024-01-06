@@ -283,11 +283,7 @@ class DatabaseManager:
 
     def get_chat_group_by_id(self, group_id) -> ChatGroups:
         try:
-            group = (
-                self.session.query(ChatGroups)
-                .filter_by(group_id=group_id)
-                .first()
-            )
+            group = self.session.query(ChatGroups).filter_by(group_id=group_id).first()
             return group
         except SQLAlchemyError as e:
             raise TempException("", excp=e)
@@ -295,9 +291,7 @@ class DatabaseManager:
     def get_message_by_id(self, message_id):
         try:
             message = (
-                self.session.query(Messages)
-                .filter_by(message_id=message_id)
-                .first()
+                self.session.query(Messages).filter_by(message_id=message_id).first()
             )
             return message
         except SQLAlchemyError as e:
@@ -325,12 +319,22 @@ class DatabaseManager:
 
     def get_user_contacts(self, user_id):
         try:
-            contacts = (
-                self.session.query(UserContacts)
-                .filter_by(user_id=user_id)
-                .all()
-            )
+            contacts = self.session.query(UserContacts).filter_by(user_id=user_id).all()
             return contacts
+        except SQLAlchemyError as e:
+            raise TempException("", excp=e)
+
+    def is_user_contact_exists(self, user_id, contact_number) -> bool:
+        try:
+            contact = (
+                self.session.query(UserContacts)
+                .filter_by(user_id=user_id, contact_number=contact_number)
+                .first()
+            )
+            if contact:
+                return True
+
+            return False
         except SQLAlchemyError as e:
             raise TempException("", excp=e)
 
@@ -347,11 +351,7 @@ class DatabaseManager:
 
     def get_group_memebers(self, group_id):
         try:
-            members = (
-                self.session.query(UserGroups)
-                .filter_by(group_id=group_id)
-                .all()
-            )
+            members = self.session.query(UserGroups).filter_by(group_id=group_id).all()
             return members
         except SQLAlchemyError as e:
             raise TempException("", excp=e)

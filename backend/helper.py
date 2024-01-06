@@ -67,9 +67,11 @@ def write_log(
         # notify_on_slack(notify_msg)
 
 
-def log_info(err_msg: str, notify: bool = False) -> None:
+def log_info(
+    err_msg: str, excp: Optional[Exception] = None, notify: bool = False
+) -> None:
     if DEBUG_MODE:
-        write_log("info", err_msg, notify=notify)
+        write_log("info", err_msg, excp=excp, notify=notify)
 
 
 def log_issue(

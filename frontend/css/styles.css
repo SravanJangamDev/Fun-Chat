@@ -94,6 +94,8 @@ ul {
 .message-box {
   padding: 10px;
   margin: 10px;
+  width: 60%;
+  box-sizing: border-box;
 }
 
 .message {
