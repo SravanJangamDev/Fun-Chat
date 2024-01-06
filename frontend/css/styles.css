@@ -42,13 +42,13 @@ header {
 .user-list-container {
   box-sizing: border-box;
   width: 25%;
-  overflow-y: auto;
+  margin: 0;
 }
 
 .chat-box-container {
   box-sizing: border-box;
   width: 75%;
-  overflow-y: auto;
+  margin: 0;
 }
 
 .user-list {
@@ -57,14 +57,17 @@ header {
   padding: 10px;
   box-sizing: border-box;
   margin: 0;
-  height: 90vh;
+  height: 85vh;
+  overflow-y: auto;
 }
 
 .chat-box {
   width: 100%;
   padding: 20px;
   box-sizing: border-box;
-  height: 90vh;
+  height: 85vh;
+  overflow-y: auto;
+  margin: 0;
 }
 
 ul {
@@ -94,30 +97,33 @@ ul {
 .message-box {
   padding: 10px;
   margin: 10px;
-  width: 60%;
-  box-sizing: border-box;
+  width: 40vw;
 }
 
 .message {
   padding: 10px;
   border-radius: 5px;
-  margin: auto;
 }
 
 .message-send {
+  float: right;
   text-align: right;
 }
 
 .message-recv {
+  float: left;
   text-align: left;
 }
 
 .text-recv {
   background-color: #ece8e8;
+  width: 50%;
 }
 
 .text-send {
   background-color: #c7c4c4;
+  width: 50%;
+  
 }
 
 .login-container,
@@ -189,6 +195,16 @@ input {
   margin-top: 5px;
 }
 
+textarea {
+  font-family: Arial, sans-serif;
+  width: 90%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 10px;
+  background-color: #e8e4e4;
+}
+
 button {
   background-color: #232323;
   color: #fff;
@@ -207,6 +223,7 @@ button {
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
+  margin: 0;
 }
 
 .small-text {
@@ -220,17 +237,25 @@ button {
 }
 
 .message-input-box {
+  display: flex;
   position: absolute;
-  bottom: 5px;
+  bottom: 0px;
   right: 0;
   width: 75%;
   box-sizing: border-box;
+  margin: 0px;
 }
 
 .left-bottom-corner {
   position: absolute;
-  bottom: 10px;
+  bottom: 15px;
   left: 5px;
+
+}
+#send-btn {
+  position: absolute;
+  bottom: 15px;
+  right: 50px;
 }
 
 .plus-button {

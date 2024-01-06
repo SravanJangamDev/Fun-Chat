@@ -1,19 +1,25 @@
 var userMessages = {};
 
-serverURL = "wss://app.loan2wheels.com/chat";
-var socket = new WebSocket(serverURL);
-socket.addEventListener("open", (event) => {
-  console.log("WebSocket connection opened:", event);
-});
+serverURL = "ws://localhost:8500";
+var socket = null
 
-socket.addEventListener("message", (event) => {
-  const message = JSON.parse(event.data);
-  handleServerResponse(message);
-});
+function connect(req_body) {
+  socket = new WebSocket(serverURL);
+  socket.addEventListener("open", (event) => {
+    console.log("WebSocket connection opened:", event);
+    sendRequest(req_body);
+  });
 
-socket.addEventListener("close", (event) => {
-  console.log("WebSocket connection closed:", event);
-});
+  socket.addEventListener("message", (event) => {
+    const message = JSON.parse(event.data);
+    handleServerResponse(message);
+  });
+
+  socket.addEventListener("close", (event) => {
+    console.log("WebSocket connection closed:", event);
+  });
+}
+
 
 function showSignupPage() {
   document.getElementById("signup-page").style.display = "block";
@@ -74,12 +80,21 @@ function fillMessageBox(messages, append) {
   }
   messages.forEach((message) => {
     const sent_by = message.sent_by;
+    const sent_to = message.sent_to;
     const selected_contact = getSelectedContact();
-    if (selected_contact != sent_by) {
-      return;
+    const user_id = getUserID();
+    if (sent_by == selected_contact) {
+      if (sent_to != user_id) {
+        return;
+      }
+    } else if (sent_by == user_id) {
+      if (sent_to != selected_contact) {
+        return;
+      }
+    } else {
+      return
     }
     const messageBox = document.createElement("div");
-    const user_id = getUserID();
     messageBox.classList.add("message-box");
 
     const messageElement = document.createElement("span");
@@ -129,6 +144,7 @@ function setUserID(userID) {
 }
 
 function fillContactBox(contacts, append) {
+  console.log(contacts)
   const contactsBox = document.getElementById("contacts-list");
   if (!append) {
     contactsBox.innerHTML = "";
@@ -187,33 +203,66 @@ function handleServerResponse(resp) {
     fillContactBox(contacts, false);
   } else if (action == "get_chat") {
     const messages = data;
+    const selected_contact = getSelectedContact();
+    if (selected_contact == undefined) {
+      return;
+    }
+    console.log(userMessages);
+    userMessages[selected_contact] = messages;
+    console.log(userMessages);
     fillMessageBox(messages, false);
   } else if (action == "message") {
     console.log(data);
     document.getElementById("message-input").value = "";
-    const message_by = data.send_by;
-    if (userMessages.hasOwnProperty(message_by)) {
-      userMessages[message_by].push(data);
+    const message_by = data.sent_by;
+    const message_to = data.sent_to;
+    const user_id = getUserID();
+    if (user_id == message_by) {
+      if (userMessages.hasOwnProperty(message_to)) {
+        userMessages[message_to].push(data);
+      } else {
+        userMessages[message_to] = [data];
+        fillContactBox(
+          [
+            {
+              "nickname": message_to,
+              "contact_number": message_to
+            },
+          ],
+          true
+        );
+      }
     } else {
-      userMessages[message_by] = [];
-      fillContactBox(
-        [
-          {
-            nickname: message_by,
-            contact_number: message_by
-          },
-        ],
-        true
-      );
+      if (userMessages.hasOwnProperty(message_by)) {
+        userMessages[message_by].push(data);
+      } else {
+        userMessages[message_by] = [data];
+        fillContactBox(
+          [
+            {
+              "nickname": message_by,
+              "contact_number": message_by
+            },
+          ],
+          true
+        );
+      }
     }
     const selected_contact = getSelectedContact();
+    if (selected_contact == undefined) {
+      return;
+    }
+    console.log(userMessages);
     const messages = userMessages[selected_contact];
-    fillMessageBox(messages, true);
+    fillMessageBox(messages, false);
+
   } else if (action == "add_contact") {
     console.log(data);
     fillContactBox([data], true);
   }
+
 }
+
 
 function sendRequest(data) {
   socket.send(JSON.stringify(data));
@@ -222,12 +271,17 @@ function sendRequest(data) {
 function login() {
   const phone_number = document.getElementById("login-phone-number").value;
   const password = document.getElementById("login-password").value;
+  // const req_body = {
+  //   action: "login",
+  //   phone_number: phone_number,
+  //   password: password,
+  // };
   const req_body = {
     action: "login",
-    phone_number: phone_number,
-    password: password,
+    phone_number: "9705407925",
+    password: "9705407925",
   };
-  sendRequest(req_body);
+  connect(req_body);
 }
 
 function signup() {
@@ -247,7 +301,7 @@ function signup() {
     email: email,
     password: password,
   };
-  sendRequest(req_body);
+  connect(req_body);
 }
 
 function sendMessage() {
@@ -289,3 +343,5 @@ function addContact() {
   showChatPage();
   // fillContactBox([data], true);
 }
+
+login();

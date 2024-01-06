@@ -38,15 +38,17 @@ class UserContacts(Base):
     __tablename__ = "user_contacts"
 
     contact_id = Column(Integer, primary_key=True, autoincrement=True)
-    user_id = Column(String(10), ForeignKey("users.user_id"), nullable=False)
+    user_id = Column(String(10), nullable=False)
+    # user_id = Column(String(10), ForeignKey("users.user_id"), nullable=False)
     nickname = Column(String(255), nullable=False)
     contact_number = Column(String(10), nullable=False)
     status = Column(String(255))
-    contact_of = Column(String(10), ForeignKey("users.user_id"), nullable=False)
+    contact_of = Column(String(10), nullable=False)
+    # contact_of = Column(String(10), ForeignKey("users.user_id"), nullable=False)
     timestamp = Column(DateTime, default=func.now(), onupdate=func.now())
 
-    contact_list_user = relationship("Users", foreign_keys=[user_id])
-    contact_of_user = relationship("Users", foreign_keys=[contact_of])
+    # contact_list_user = relationship("Users", foreign_keys=[user_id])
+    # contact_of_user = relationship("Users", foreign_keys=[contact_of])
 
     def details(self) -> dict:
         return {

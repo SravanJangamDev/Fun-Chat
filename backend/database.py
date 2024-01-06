@@ -52,6 +52,8 @@ class DatabaseManager:
             return user
         except SQLAlchemyError as e:
             raise TempException("Failed to create user.", excp=e)
+        finally:
+            self.session.rollback()
 
     def create_user_contact(
         self,
@@ -60,6 +62,7 @@ class DatabaseManager:
         contact_number: str,
         status=None,
     ) -> UserContacts:
+        # with self.self.session() as self.session:
         try:
             user_contact = UserContacts(
                 user_id=user_id,
@@ -74,6 +77,8 @@ class DatabaseManager:
             return user_contact
         except SQLAlchemyError as e:
             raise TempException("Failed to create user contact.", excp=e)
+        finally:
+            self.session.rollback()
 
     def create_chat_group(
         self,
@@ -83,6 +88,7 @@ class DatabaseManager:
         caption=None,
         status=None,
     ) -> ChatGroups:
+        # with self.self.session() as self.session:
         try:
             group = ChatGroups(
                 nickname=nickname,
@@ -96,6 +102,8 @@ class DatabaseManager:
             return group
         except SQLAlchemyError as e:
             raise TempException("Failed to create Chat group.", excp=e)
+        finally:
+            self.session.rollback()
 
     def create_user_group(
         self,
@@ -105,6 +113,7 @@ class DatabaseManager:
         joined_on=None,
         status=None,
     ) -> UserGroups:
+        # with self.self.session() as self.session:
         try:
             user_group = UserGroups(
                 group_id=group_id,
@@ -118,6 +127,8 @@ class DatabaseManager:
             return user_group
         except SQLAlchemyError as e:
             raise TempException("Failed to create User group.", excp=e)
+        finally:
+            self.session.rollback()
 
     def create_message(
         self,
@@ -127,6 +138,7 @@ class DatabaseManager:
         message_media_filename=None,
         status=None,
     ) -> Messages:
+        # with self.self.session() as self.session:
         try:
             message = Messages(
                 message_text=message_text,
@@ -140,6 +152,8 @@ class DatabaseManager:
             return message
         except SQLAlchemyError as e:
             raise TempException("Failed to create message", excp=e)
+        finally:
+            self.session.rollback()
 
     def update_user(
         self,
@@ -152,6 +166,7 @@ class DatabaseManager:
         caption=None,
         status=None,
     ):
+        # with self.self.session() as self.session:
         try:
             user = self.get_user_by_id(user_id)
             if firstname:
@@ -177,6 +192,8 @@ class DatabaseManager:
             self.session.commit()
         except SQLAlchemyError as e:
             raise TempException("Update User failed.", excp=e)
+        finally:
+            self.session.rollback()
 
     def update_user_contact(
         self,
@@ -185,110 +202,150 @@ class DatabaseManager:
             pass
         except SQLAlchemyError as e:
             raise TempException("", excp=e)
+        finally:
+            self.session.rollback()
 
     def update_message(self):
         try:
             pass
         except SQLAlchemyError as e:
             raise TempException("", excp=e)
+        finally:
+            self.session.rollback()
 
     def update_chat_group(self):
         try:
             pass
         except SQLAlchemyError as e:
             raise TempException("", excp=e)
+        finally:
+            self.session.rollback()
 
     def update_user_group(self):
         try:
             pass
         except SQLAlchemyError as e:
             raise TempException("", excp=e)
+        finally:
+            self.session.rollback()
 
     def deactivate_user(self):
         try:
             pass
         except SQLAlchemyError as e:
             raise TempException("", excp=e)
+        finally:
+            self.session.rollback()
 
     def activate_user(self):
         try:
             pass
         except SQLAlchemyError as e:
             raise TempException("", excp=e)
+        finally:
+            self.session.rollback()
 
     def block_user_contact(self):
         try:
             pass
         except SQLAlchemyError as e:
             raise TempException("", excp=e)
+        finally:
+            self.session.rollback()
 
     def unblock_user_contact(self):
         try:
             pass
         except SQLAlchemyError as e:
             raise TempException("", excp=e)
+        finally:
+            self.session.rollback()
 
     def delete_user_contact(self, user_id, contact_number):
+        # with self.self.session() as self.session:
         try:
             contact = self.get_user_contact(user_id, contact_number)
             self.session.delete(contact)
             self.session.commit()
         except SQLAlchemyError as e:
             raise TempException("", excp=e)
+        finally:
+            self.session.rollback()
 
     def add_user_to_group(self):
         try:
             pass
         except SQLAlchemyError as e:
             raise TempException("", excp=e)
+        finally:
+            self.session.rollback()
 
     def remove_user_from_group(self, user_id, group_id):
+        # with self.self.session() as self.session:
         try:
             user_group = self.get_user_group_by_id(user_id, group_id)
             self.session.delete(user_group)
             self.session.commit()
         except SQLAlchemyError as e:
             raise TempException("", excp=e)
+        finally:
+            self.session.rollback()
 
     def delete_group(self, group_id):
+        # with self.self.session() as self.session:
         try:
             group = self.get_chat_group_by_id(group_id=group_id)
             self.session.delete(group)
             self.session.commit()
         except SQLAlchemyError as e:
             raise TempException("", excp=e)
+        finally:
+            self.session.rollback()
 
     def delete_message(self, message_id):
+        # with self.self.session() as self.session:
         try:
             message = self.get_message_by_id(message_id)
             self.session.delete(message)
             self.session.commit()
         except SQLAlchemyError as e:
             raise TempException("", excp=e)
+        finally:
+            self.session.rollback()
 
     def get_all_users(self) -> list:
+        # with self.self.session() as self.session:
         try:
             users = self.session.query(Users).all()
             return users
         except SQLAlchemyError as e:
             raise TempException("Failed to get users", excp=e)
+        finally:
+            self.session.rollback()
 
     def get_user_by_id(self, user_id) -> Users:
+        # with self.self.session() as self.session:
         try:
             user = self.session.query(Users).filter_by(user_id=user_id).first()
 
             return user
         except SQLAlchemyError as e:
             raise TempException("", excp=e)
+        finally:
+            self.session.rollback()
 
     def get_chat_group_by_id(self, group_id) -> ChatGroups:
+        # with self.self.session() as self.session:
         try:
             group = self.session.query(ChatGroups).filter_by(group_id=group_id).first()
             return group
         except SQLAlchemyError as e:
             raise TempException("", excp=e)
+        finally:
+            self.session.rollback()
 
     def get_message_by_id(self, message_id):
+        # with self.self.session() as self.session:
         try:
             message = (
                 self.session.query(Messages).filter_by(message_id=message_id).first()
@@ -298,6 +355,7 @@ class DatabaseManager:
             raise TempException("", excp=e)
 
     def get_user_group_by_id(self, user_id, group_id) -> UserGroups:
+        # with self.self.session() as self.session:
         try:
             user_group = (
                 self.session.query(UserGroups)
@@ -307,8 +365,11 @@ class DatabaseManager:
             return user_group
         except SQLAlchemyError as e:
             raise TempException("", excp=e)
+        finally:
+            self.session.rollback()
 
     def get_user_groups(self, user_id, group_id) -> list:
+        # with self.self.session() as self.session:
         try:
             user_groups = (
                 self.session.query(UserGroups).filter(user_id == user_id).all()
@@ -316,15 +377,21 @@ class DatabaseManager:
             return user_groups
         except SQLAlchemyError as e:
             raise TempException("", excp=e)
+        finally:
+            self.session.rollback()
 
     def get_user_contacts(self, user_id):
+        # with self.self.session() as self.session:
         try:
             contacts = self.session.query(UserContacts).filter_by(user_id=user_id).all()
             return contacts
         except SQLAlchemyError as e:
             raise TempException("", excp=e)
+        finally:
+            self.session.rollback()
 
     def is_user_contact_exists(self, user_id, contact_number) -> bool:
+        # with self.self.session() as self.session:
         try:
             contact = (
                 self.session.query(UserContacts)
@@ -337,8 +404,11 @@ class DatabaseManager:
             return False
         except SQLAlchemyError as e:
             raise TempException("", excp=e)
+        finally:
+            self.session.rollback()
 
     def get_user_contact(self, user_id, contact_number):
+        # with self.self.session() as self.session:
         try:
             contact = (
                 self.session.query(UserContacts)
@@ -348,15 +418,21 @@ class DatabaseManager:
             return contact
         except SQLAlchemyError as e:
             raise TempException("", excp=e)
+        finally:
+            self.session.rollback()
 
     def get_group_memebers(self, group_id):
+        # with self.self.session() as self.session:
         try:
             members = self.session.query(UserGroups).filter_by(group_id=group_id).all()
             return members
         except SQLAlchemyError as e:
             raise TempException("", excp=e)
+        finally:
+            self.session.rollback()
 
     def get_messages_of_two_users(self, user1: str, user2: str):
+        # with self.self.session() as self.session:
         try:
             messages = (
                 self.session.query(Messages)
@@ -370,6 +446,8 @@ class DatabaseManager:
             return messages
         except SQLAlchemyError as e:
             raise TempException("", excp=e)
+        finally:
+            self.session.rollback()
 
     def is_user_exists(self, user_id: str) -> bool:
         try:
@@ -379,3 +457,5 @@ class DatabaseManager:
             return False
         except SQLAlchemyError as e:
             raise TempException("", excp=e)
+        finally:
+            self.session.rollback()
