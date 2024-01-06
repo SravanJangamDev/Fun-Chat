@@ -388,31 +388,62 @@ subscription table:
 
 """
 """
-Message structure:
+*************** Tables *************************
+users:
+1. {
+    "user_id": 1,
+    "phone_number": "9705407925",
+    "firstname": "Jangam",
+    "lastname": "Sravan",
+    "displayname": "Sravan",
+    "displaypicture": "https://image.png",
+    "email": "jangamsravan607@gmail.com",
+    "caption": "",
+    "password": "Sravan123455",
+    "status": "",
+}
+
+2. user_contacts:
 {
-    "action": "message",
-    "message": "20 20 adali ika",
-    "msg_from": "Sravan",
-    "msg_to": "Bindu",
+    "contact_id": 1,
+    "user_id": 1,
+    "nickname": "Bindu,
+    "contact_number": "7234738487",
+    "status": "",
+    "contact_of": ""
+}
+
+3. chat_group:
+{
+    "group_id": "",
+    "name": Bindu,
+    "profile_image": "",
+    "caption": "",
+    "created_by": "",
+    "status": "",
+    "timestamp": "",
+}
+
+4. user_groups:
+{
+    "group_id": "",
+    "user_id": "",
+    "access_level": "",
+    "join_on": "",
+    "status": "",
+}
+
+5. Message structure:
+{
+    "message_text": "20 20 adali ika",
+    "message_media_filename": "",
+    "sent_by": 1,
+    "sent_to": 2,
     "msg_id": "7bf13641-74ef-42e6-9185-bb8354bfdb9e",
-    "time": "",
+    "timestamp": "",
+    "status": "delected|edited"
 }
 
-User structure:
-{
-    "user_id": "Bindu",
-    "displayname": "Bindu",
-    "displaypicture": "",
-    "contacts": [
-        {
-            "nickname": Bindu,
-            "number": "7234738487",
-            "status": "",
-        }
-    ],
-    "groups": [],
-    "password": "bindu"
-}
+** Where to store last active details, ..?
 
-
-"""
+"""'

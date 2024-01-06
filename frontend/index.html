@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fun-Chat</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
@@ -14,12 +14,14 @@
       Fun Chat
     </div>
     <div class="username" id="profile-name">
-      Jangam Sravan
+      Your name
     </div>
-    <span id="selected-user" style="display: none;">""</span>
     <div class="user-photo">
-      <img class="profile-image" src="images/user_profile.png" alt="User Photo"
-        width="50px" height="50px">
+      <img class="profile-image" src="images/user_profile.png" alt="User Photo" width="50px" height="50px">
+    </div>
+    <div id="hidden" style="display: none;">
+      <span id="user_id"></span>
+      <span id="selected_contact"></span>
     </div>
   </header>
   <div class="chat-container">
@@ -28,8 +30,7 @@
         <!-- User list content goes here -->
         <ul id="contacts-list">
           <li class="contact">
-            <img class="contact-photo" src="images/user_profile.png"
-              width="30px" height="30px">
+            <img class="contact-photo" src="images/user_profile.png" width="30px" height="30px">
             <span class="contact-name">Sravan</span>
           </li>
           <!-- Add more users as needed -->
@@ -47,18 +48,18 @@
     <div class="chat-box-container">
       <div class="chat-box" id="chat-box">
         <!-- Chat content goes here -->
-        <div class="message-box message-send">
-          <!-- <span class="bold">You:</span> -->
-          <span class="message text-send"> how are you? </span>
-        </div>
-        <div class="message-box message-recv">
-          <!-- <span class="bold">Bindu:</span> -->
-          <span class="message text-recv"> I'm good, thanks! How about you?
+        <!-- <div class="message-box message-send">
+          <span class="message text-send"> how are you? </span> </span> <span class="small-text">06:09 PM
           </span>
         </div>
+        <div class="message-box message-recv">
+          <span class="message text-recv"> I'm good, thanks! How about you?
+          </span> <span class="small-text">2023 Dec 24 06:09 PM
+          </span>
+        </div> -->
         <!-- Add more chat messages as needed -->
       </div>
-      <div class="message-input-box">
+      <div class="message-input-box" id="message-input-box">
         <input type="text" placeholder="type message...." id="message-input">
         <span class="span-button" onclick="sendMessage()">send</span>
       </div>
@@ -66,60 +67,61 @@
 
   </div>
   <div class="signup-container" id="signup-page">
-    <!-- No closing button as requested -->
     <div class="signup-container-box">
       <h2 class="text-align-center">Welcome to Fun-Chat!</h2>
       <div class="input-group">
-        <label for="username">Username:</label>
-        <input type="text" id="signup-username" name="username"
-          placeholder="Enter your username">
+        <label for="phone_number">Phone Number:</label>
+        <input type="text" id="signup-phone-number" name="username" placeholder="Enter your Phone Number">
       </div>
-
+      <div class="input-group">
+        <label for="firstname">Firstname:</label>
+        <input type="text" id="signup-firstname" name="firstname" placeholder="Enter your Firstname">
+      </div>
+      <div class="input-group">
+        <label for="lastname">Lastname:</label>
+        <input type="text" id="signup-lastname" name="lastname" placeholder="Enter your Lastname">
+      </div>
+      <div class="input-group">
+        <label for="displayname">Displayname:</label>
+        <input type="text" id="signup-displayname" name="displayname" placeholder="Enter your displayname">
+      </div>
+      <div class="input-group">
+        <label for="email">Email:</label>
+        <input type="text" id="signup-email" name="email" placeholder="Enter your Email">
+      </div>
       <div class="input-group">
         <label for="password">Password:</label>
-        <input type="password" id="signup-password" name="password"
-          placeholder="Enter your password">
-      </div>
-
-      <div class="input-group">
-        <label for="displayName">Display Name:</label>
-        <input type="text" id="signup-displayname" name="displayName"
-          placeholder="Enter your display name">
+        <input type="password" id="signup-password" name="password" placeholder="Enter your password">
       </div>
       <div class="input-group text-align-center">
-        <button onclick="signup()">Sign Up</button>
+        <button onclick="signup()">Create Account</button>
       </div>
       <div class="input-group">
-        <span class="small-text">Alread has account? <span class="link"
-            onclick="showLoginPage()">Login</span></span>
+        <span class="small-text">Alread has account? <span class="link" onclick="showLoginPage()">Login</span></span>
       </div>
 
 
     </div>
   </div>
   <div class="login-container" id="login-page">
-    <!-- No closing button as requested -->
     <div class="login-container-box">
       <h2 class="text-align-center">Welcome to Fun-Chat!</h2>
       <div class="input-group">
-        <label for="username">Username:</label>
-        <input type="text" id="login-username" name="username"
-          placeholder="Enter your username">
+        <label for="phone_number">Phone Number:</label>
+        <input type="text" id="login-phone-number" name="phone_number" placeholder="Enter your Phone Number">
       </div>
 
       <div class="input-group">
         <label for="password">Password:</label>
-        <input type="password" id="login-password" name="password"
-          placeholder="Enter your password">
+        <input type="password" id="login-password" name="password" placeholder="Enter your password">
       </div>
 
       <div class="input-group text-align-center">
         <button onclick="login()">Login</button>
       </div>
       <div class="input-group">
-        <span class="small-text">Don't have account? <span class="link"
-            onclick="showSignupPage()">Sign
-            up</span></span>
+        <span class="small-text">Don't have account? <span class="link" onclick="showSignupPage()">Create
+            account</span></span>
       </div>
 
 
@@ -127,21 +129,33 @@
   </div>
   <div class="add-contact-container" id="add-contact-page">
     <div class="add-contact-container-box">
-      <span class="close-button" id ="contact-close-btn" onclick="showChatPage()">X</span>
+      <span class="close-button" id="contact-close-btn" onclick="hideAddContactPage()">X</span>
       <h2 class="text-align-center">Add Contact!</h2>
       <div class="input-group">
-        <label for="username">Username:</label>
-        <input type="text" id="add-contact-username" name="username"
-          placeholder="Enter contact username">
+        <label for="phone_number">Phone Number:</label>
+        <input type="text" id="add-contact-phone-number" name="phone_number" placeholder="Enter contact Phone Number">
+      </div>
+      <div class="input-group">
+        <label for="nickname">Nickname:</label>
+        <input type="text" id="add-contact-nickname" name="nickname" placeholder="Enter contact Nickname">
       </div>
       <div class="input-group text-align-center">
         <button onclick="addContact()">Add contact</button>
       </div>
     </div>
-
   </div>
 
-  <script src="script.js"></script>
+  <div class="status-msg-container" id="status-msg-page">
+    <div class="status-msg-container-box">
+      <span class="close-button" id="status-close-btn" onclick="hideStatusBox()">X</span>
+      <h2 class="text-align-center red-text" id="status-header">Error</h2>
+      <div class="input-group">
+        <p class="" id="status-msg"></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
 </body>
 
 </html>

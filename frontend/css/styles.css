@@ -76,13 +76,15 @@ ul {
 .contact {
   display: flex;
   padding: 10px;
-  border-bottom:1px solid #a5a5a5;
+  border-bottom: 1px solid #a5a5a5;
 }
+
 .contact-photo {
   border-radius: 50%;
   width: 30px;
   height: 30px;
 }
+
 .contact-name {
   padding: 10px;
   margin-left: 10px;
@@ -93,6 +95,7 @@ ul {
   padding: 10px;
   margin: 10px;
 }
+
 .message {
   padding: 10px;
   border-radius: 5px;
@@ -115,7 +118,8 @@ ul {
   background-color: #c7c4c4;
 }
 
-.login-container, .signup-container{
+.login-container,
+.signup-container {
   position: absolute;
   top: 0;
   height: 100vh;
@@ -136,7 +140,21 @@ ul {
   box-sizing: border-box;
 }
 
-.login-container-box, .signup-container-box, .add-contact-container-box{
+.status-msg-container {
+  position: absolute;
+  top: 10%;
+  height: 100vh;
+  width: 100%;
+  z-index: 1;
+  /* background-color: #fff; */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.login-container-box,
+.signup-container-box,
+.add-contact-container-box,
+.status-msg-container-box {
   width: 50%;
   padding: 20px;
   box-sizing: border-box;
@@ -178,6 +196,7 @@ button {
   cursor: pointer;
   font-size: 16px;
 }
+
 .span-button {
   background-color: #232323;
   color: #fff;
@@ -197,6 +216,7 @@ button {
   text-decoration: underline;
   cursor: pointer;
 }
+
 .message-input-box {
   position: absolute;
   bottom: 5px;
@@ -204,18 +224,19 @@ button {
   width: 75%;
   box-sizing: border-box;
 }
+
 .left-bottom-corner {
   position: absolute;
   bottom: 10px;
   left: 5px;
 }
 
-.plus-button{
+.plus-button {
   font-size: 2rem;
   border: 1px solid #232323;
   border-radius: 40%;
   padding: 5px;
-  color:  #fff;
+  color: #fff;
   background-color: #232323;
   cursor: pointer;
 }
@@ -224,6 +245,18 @@ button {
   float: right;
   font-size: 1.5rem;
   border-radius: 50%;
-  color:  #232323;
+  color: #232323;
   cursor: pointer;
+}
+
+.hide {
+  display: none;
+}
+
+.green-text {
+  color: rgb(46, 240, 46);
+}
+
+.red-text {
+  color: rgb(247, 33, 33);
 }
