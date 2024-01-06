@@ -1,0 +1,10 @@
+{
+  "svrty": "INFO",
+  "family": "pubsub",
+  "tracker_id": "ba5dbc9e-de6d-4b80-94f0-610fd682bf91",
+  "time_stamp": "2024-01-06 11:1813",
+  "err_msg": "Connection closed gracefully: ('127.0.0.1', 56712)",
+  "filename": "/home/ubuntu/LOS/Fun-Chat/backend/app.py",
+  "lineno": 237,
+  "Exception": null
+}

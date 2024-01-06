@@ -17,7 +17,7 @@ def write_log(
     excp: Optional[Exception] = None,
     notify: bool = False,
 ) -> None:
-    print(err_msg, excp)
+    print("Message", err_msg, excp)
     tracker_id = str(uuid4())
     log_details: dict = {
         "svrty": svrty.upper(),

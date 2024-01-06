@@ -90,23 +90,3 @@ messages = {
     "timestamp": "",
     "status": "delected|edited"
 }
-
-
-
-Dear Ramani,
-
-I hope this message finds you well. I'm reaching out to express my interest in the Python Developer position at Live Connections.
-
-I hold a Graduation degree(B.Tech) from the National Institute of Technology Warangal and have 2+ years of experience in backend development, specializing in Python. Although your job listing mentions Java or .NET, I am confident in my ability to quickly adapt to new technologies, including Java.
-
-My experience includes developing robust server-side applications and contributing to various projects.
-
-I have attached my resume and would appreciate the opportunity to discuss how my skills could benefit your team. I'm available at 9705407925 or jangamsravan607@gmail.com for an interview.
-
-Thank you for considering my application.
-
-Sincerely,
-Jangam Sravan
-9705407925
-jangamsravan607@gmail.com
-LinkedIn: https://www.linkedin.com/in/jangam-sravan-a720ab192/

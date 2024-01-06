@@ -113,13 +113,15 @@ class Messages(Base):
     message_id = Column(Integer, primary_key=True, autoincrement=True)
     message_media_filename = Column(String(255))
     message_text = Column(String(255), nullable=False)
-    sent_by = Column(String(10), ForeignKey("users.user_id"), nullable=False)
-    sent_to = Column(String(10), ForeignKey("users.user_id"), nullable=False)
+    # sent_by = Column(String(10), ForeignKey("users.user_id"), nullable=False)
+    # sent_to = Column(String(10), ForeignKey("users.user_id"), nullable=False)
+    sent_by = Column(String(10), nullable=False)
+    sent_to = Column(String(10), nullable=False)
     status = Column(String(255))
     timestamp = Column(DateTime, default=func.now(), onupdate=func.now())
 
-    sent_by_user = relationship("Users", foreign_keys=[sent_by])
-    sent_to_user = relationship("Users", foreign_keys=[sent_to])
+    # sent_by_user = relationship("Users", foreign_keys=[sent_by])
+    # sent_to_user = relationship("Users", foreign_keys=[sent_to])
 
     def details(self) -> dict:
         return {

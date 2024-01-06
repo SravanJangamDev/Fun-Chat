@@ -106,7 +106,6 @@ async def add_contact(user_id, req_body: dict) -> dict:
     contact = db.create_user_contact(
         user_id, nickname=nickname, contact_number=contact_number
     )
-
     return contact.details()
 
 

@@ -1,4 +1,4 @@
-serverURL = "ws://localhost:3000";
+serverURL = "wss://app.loan2wheels.com/chat";
 var socket = new WebSocket(serverURL);
 socket.addEventListener("open", (event) => {
   console.log("WebSocket connection opened:", event);
@@ -86,12 +86,12 @@ function fillMessageBox(messages, append) {
     timeElement.classList.add("small-text")
     timeElement.innerText = message.timestamp
 
-    if (message.sent_to == user_id){
+    if (message.sent_to == user_id) {
       messageBox.classList.add("message-recv")
       messageElement.classList.add("text-recv")
       messageBox.appendChild(timeElement)
       messageBox.appendChild(messageElement)
-    } else{
+    } else {
       messageBox.classList.add("message-send")
       messageElement.classList.add("text-send")
       messageBox.appendChild(messageElement)
@@ -103,7 +103,7 @@ function fillMessageBox(messages, append) {
   chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-function setSelectedContact(contact){
+function setSelectedContact(contact) {
   console.log(contact)
   document.getElementById("selected_contact").value = contact;
 }
@@ -128,7 +128,7 @@ function fillContactBox(contacts, append) {
   if (!append) {
     contactsBox.innerHTML = "";
   }
-  
+
   contacts.forEach(contact => {
     const contactBox = document.createElement("li");
     contactBox.classList.add("contact");
@@ -169,11 +169,11 @@ function handleServerResponse(resp) {
   }
   else if (action == "login") {
     const phone_number = data.phone_number
-    
+
     setUserID(phone_number)
     showChatPage();
-    sendRequest({"action": "get_account_details"})
-    sendRequest({"action": "get_contacts"})
+    sendRequest({ "action": "get_account_details" })
+    sendRequest({ "action": "get_contacts" })
   }
   else if (action == "get_account_details") {
     console.log(data)
@@ -201,7 +201,7 @@ function handleServerResponse(resp) {
 }
 
 function sendRequest(data) {
-    socket.send(JSON.stringify(data));
+  socket.send(JSON.stringify(data));
 }
 
 function login() {
@@ -229,7 +229,7 @@ function signup() {
     "firstname": firstname,
     "lastname": lastname,
     "displayname": displayname,
-    "email" : email,
+    "email": email,
     "password": password
   }
   sendRequest(req_body)
