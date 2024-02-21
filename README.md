@@ -1,6 +1,6 @@
 # Fun-Chat App ReadMe
 ## Overview
-Fun-Chat App is a chat software designed for seamless communication. It is implemented with a focus on simplicity and efficiency, providing a platform for individual and group chats. The project utilizes a combination of backend and frontend technologies to deliver a robust chatting experience.
+Fun-Chat App is a chat software designed for seamless communication. It is implemented with a focus on simplicity and efficiency, providing a platform for individual and group chats. The project utilizes backend and frontend technologies to deliver a robust chatting experience.
 
 
 ## Technologies Used
@@ -31,11 +31,11 @@ Fun-Chat App is a chat software designed for seamless communication. It is imple
 ## How to use
   ### Installation:
   - Clone the repository to your local machine.
-    git clone https://github.com/SravanJangamDev/Fun-Chat.git
+    `git clone https://github.com/SravanJangamDev/Fun-Chat.git`
 
   ### Backend Setup:
   - Navigate to the backend directory.
-    cd Fun-Chat/backend
+    `cd Fun-Chat/backend`
 
   - Install dependencies.
     pip install -r requirements.txt
@@ -44,7 +44,7 @@ Fun-Chat App is a chat software designed for seamless communication. It is imple
     - [Reference Doc](https://ubuntu.com/server/docs/databases-mysql).
   
   - Update config file.
-    Example:
+    `Example:
       DEBUG_MODE = True
       ERROR_LOG = ""
       APP_HOST = "127.0.0.1"
@@ -54,16 +54,16 @@ Fun-Chat App is a chat software designed for seamless communication. It is imple
       MYSQL_HOST = "localhost"
       MYSQL_PORT = 3306
       MYSQL_DBNAME = "Your DB name"
-      MYSQL_DEBUG_MODE = False
+      MYSQL_DEBUG_MODE = False`
 
   - Run the backend server.
     python app.py
 
   ### Frontend Setup:
   - Open the frontend directory.
-    cd Fun-Chat/frontend
+    `cd Fun-Chat/frontend`
 
-  - Open index.html in your preferred web browser.
+  - Open `index.html` in your preferred web browser.
 
   ### Usage:
-  - Create an account and start enjoying the features of Fun-Chat App.
+  - Create an account and start enjoying the features of the Fun-Chat App.
