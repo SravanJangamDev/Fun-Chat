@@ -27,3 +27,43 @@ Fun-Chat App is a chat software designed for seamless communication. It is imple
   - Retrieve chat messages for a comprehensive view of your conversations.
   ### 6. Send Messages:
   - Send messages in real-time to stay connected with your contacts.
+
+## How to use
+  ### Installation:
+  - Clone the repository to your local machine.
+    git clone https://github.com/SravanJangamDev/Fun-Chat.git
+
+  ### Backend Setup:
+  - Navigate to the backend directory.
+    cd Fun-Chat/backend
+
+  - Install dependencies.
+    pip install -r requirements.txt
+  
+  - Install MySql
+    - [Reference Doc](https://ubuntu.com/server/docs/databases-mysql).
+  
+  - Update config file.
+    Example:
+      DEBUG_MODE = True
+      ERROR_LOG = ""
+      APP_HOST = "127.0.0.1"
+      APP_PORT = 8500
+      MYSQL_USERNAME = "Your Yysql username"
+      MYSQL_PASSWORD = "Your Mysql password"
+      MYSQL_HOST = "localhost"
+      MYSQL_PORT = 3306
+      MYSQL_DBNAME = "Your DB name"
+      MYSQL_DEBUG_MODE = False
+
+  - Run the backend server.
+    python app.py
+
+  ### Frontend Setup:
+  - Open the frontend directory.
+    cd Fun-Chat/frontend
+
+  - Open index.html in your preferred web browser.
+
+  ### Usage:
+  - Create an account and start enjoying the features of Fun-Chat App.

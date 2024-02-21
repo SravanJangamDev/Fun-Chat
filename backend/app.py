@@ -3,7 +3,7 @@ import websockets
 from websockets import WebSocketServerProtocol
 from websockets.exceptions import ConnectionClosedOK
 import json
-from typing import Union, Optional, List, Dict
+from typing import Dict
 from config import (
     MYSQL_PORT,
     MYSQL_USERNAME,
@@ -27,7 +27,9 @@ def is_invalid_password(actual_pwd: str, password: str) -> bool:
     return actual_pwd != password
 
 
-async def send_resp_to_client(client: WebSocketServerProtocol, resp: dict) -> None:
+async def send_resp_to_client(
+    client: WebSocketServerProtocol, resp: dict
+) -> None:
     try:
         await client.send(json.dumps(resp))
     except Exception as e:
@@ -304,22 +306,22 @@ actions:
 signup: 
 {
     "action": "signup",
-    "phone_number": "9705407925",
+    "phone_number": "",
     "firstname": "Jangam",
     "lastname": "Sravan",
     "displayname": "Sravan",
     "displaypicture": "https://image.png",
-    "email": "jangamsravan607@gmail.com",
+    "email": "",
     "caption": "",
-    "password": "Sravan123455",
+    "password": "",
     "status": ""
 }
 
 login:
 {
     "action": "login",
-    "phone_number": "9705407925",
-    "password": "Sravan123455"
+    "phone_number": "",
+    "password": ""
 }
 
 get_account_details:
@@ -335,20 +337,20 @@ get_contacts:
 add new contact:
 {
     "action": "add_contact",
-    "nickname": "Bindu",
-    "contact_number": "8503358389"
+    "nickname": "",
+    "contact_number": ""
 }
 
 remove contact:
 {
     "action": "remove_contact",
-    "contact_number": "8903358389"
+    "contact_number": ""
 }
 
 messages:
 {
     "action": "message",
     "message_text": "What are you doing?",
-    "sent_to": "8503358389"
+    "sent_to": ""
 }
 """

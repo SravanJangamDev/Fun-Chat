@@ -1,10 +1,10 @@
 DEBUG_MODE = True
-ERROR_LOG = ".log.json"
+ERROR_LOG = ""
 APP_HOST = "127.0.0.1"
 APP_PORT = 8500
-MYSQL_USERNAME = "root"
-MYSQL_PASSWORD = "Sravan123@"
+MYSQL_USERNAME = "Your Yysql username"
+MYSQL_PASSWORD = "Your Mysql password"
 MYSQL_HOST = "localhost"
 MYSQL_PORT = 3306
-MYSQL_DBNAME = "testdb"
+MYSQL_DBNAME = "Your DB name"
 MYSQL_DEBUG_MODE = False

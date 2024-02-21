@@ -41,12 +41,12 @@ mainchat:
 ********* Tables***********
 users = {
     "user_id": 1,
-    "phone_number": "9705407925",
+    "phone_number": "",
     "firstname": "Jangam",
     "lastname": "Sravan",
     "displayname": "Sravan",
     "displaypicture": "https://image.png",
-    "email": "jangamsravan607@gmail.com",
+    "email": "",
     "caption": "",
     "password": "Sravan123455",
     "status": "",
@@ -55,8 +55,8 @@ users = {
 user_contacts = {
     "contact_id": 1
     "user_id": 1,
-    "nickname": "Bindu,
-    "contact_number": "7234738487",
+    "nickname": ",
+    "contact_number": "",
     "status": "",
     "contact_of": "",
 

@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, func
-from sqlalchemy.orm import declarative_base, relationship
+from sqlalchemy.orm import declarative_base
 
 Base = declarative_base()
 
@@ -88,7 +88,9 @@ class ChatGroups(Base):
 class UserGroups(Base):
     __tablename__ = "user_groups"
 
-    group_id = Column(Integer, ForeignKey("chat_groups.group_id"), primary_key=True)
+    group_id = Column(
+        Integer, ForeignKey("chat_groups.group_id"), primary_key=True
+    )
     user_id = Column(String(10), ForeignKey("users.user_id"), primary_key=True)
     access_level = Column(String(255))
     joined_on = Column(DateTime, default=func.now())
