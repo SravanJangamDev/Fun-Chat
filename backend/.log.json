@@ -1,0 +1,160 @@
+{
+  "svrty": "INFO",
+  "family": "pubsub",
+  "tracker_id": "ba5dbc9e-de6d-4b80-94f0-610fd682bf91",
+  "time_stamp": "2024-01-06 11:1813",
+  "err_msg": "Connection closed gracefully: ('127.0.0.1', 56712)",
+  "filename": "/home/ubuntu/LOS/Fun-Chat/backend/app.py",
+  "lineno": 237,
+  "Exception": null
+}
+{
+  "svrty": "INFO",
+  "family": "pubsub",
+  "tracker_id": "75239c22-7f05-4134-8d8c-b3f4a0bf2899",
+  "time_stamp": "2024-01-06 14:4335",
+  "err_msg": "Connection closed gracefully: ('127.0.0.1', 43330)",
+  "filename": "/home/jangam/Desktop/Project/Fun-Chat/backend/app.py",
+  "lineno": 238,
+  "Exception": null
+}
+{
+  "svrty": "INFO",
+  "family": "pubsub",
+  "tracker_id": "102475f4-a787-4754-88ab-26d53705294a",
+  "time_stamp": "2024-01-06 14:4335",
+  "err_msg": "Connection closed gracefully: ('127.0.0.1', 48152)",
+  "filename": "/home/jangam/Desktop/Project/Fun-Chat/backend/app.py",
+  "lineno": 238,
+  "Exception": null
+}
+{
+  "svrty": "ISSUE",
+  "family": "pubsub",
+  "tracker_id": "3643f9ad-8d79-4566-8693-9502b7f2b685",
+  "time_stamp": "2024-01-06 14:5334",
+  "err_msg": "Error processing connection",
+  "filename": "/home/jangam/Desktop/Project/Fun-Chat/backend/app.py",
+  "lineno": 244,
+  "Exception": "Traceback (most recent call last):\n  File \"/home/jangam/Desktop/Project/Fun-Chat/backend/app.py\", line 212, in handle_connection\n    user = await signup(req_body)\n  File \"/home/jangam/Desktop/Project/Fun-Chat/backend/app.py\", line 62, in signup\n    return user.details()\n  File \"/home/jangam/Desktop/Project/Fun-Chat/backend/models.py\", line 23, in details\n    \"user_id\": self.user_id,\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/orm/attributes.py\", line 566, in __get__\n    return self.impl.get(state, dict_)  # type: ignore[no-any-return]\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/orm/attributes.py\", line 1086, in get\n    value = self._fire_loader_callables(state, key, passive)\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/orm/attributes.py\", line 1116, in _fire_loader_callables\n    return state._load_expired(state, passive)\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/orm/state.py\", line 798, in _load_expired\n    self.manager.expired_attribute_loader(self, toload, passive)\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/orm/loading.py\", line 1584, in load_scalar_attributes\n    raise orm_exc.DetachedInstanceError(\nsqlalchemy.orm.exc.DetachedInstanceError: Instance <Users at 0x7fe3ba2ae500> is not bound to a Session; attribute refresh operation cannot proceed (Background on this error at: https://sqlalche.me/e/20/bhk3)\n"
+}
+{
+  "svrty": "INFO",
+  "family": "pubsub",
+  "tracker_id": "abc8011b-6241-4d45-b45a-9dcd51d3d801",
+  "time_stamp": "2024-01-06 14:5802",
+  "err_msg": "Account already created please do login.",
+  "filename": "/home/jangam/Desktop/Project/Fun-Chat/backend/app.py",
+  "lineno": 50,
+  "Exception": null
+}
+{
+  "svrty": "ISSUE",
+  "family": "pubsub",
+  "tracker_id": "7f5d0065-f8e5-4175-b55e-9e9f5bd37ae8",
+  "time_stamp": "2024-01-06 14:5855",
+  "err_msg": "Failed to create user contact.",
+  "filename": "/home/jangam/Desktop/Project/Fun-Chat/backend/database.py",
+  "lineno": 80,
+  "Exception": "Traceback (most recent call last):\n  File \"/home/jangam/.local/lib/python3.10/site-packages/mysql/connector/connection_cext.py\", line 639, in cmd_query\n    self._cmysql.query(\n_mysql_connector.MySQLInterfaceError: Cannot add or update a child row: a foreign key constraint fails (`testdb`.`user_contacts`, CONSTRAINT `user_contacts_ibfk_2` FOREIGN KEY (`contact_of`) REFERENCES `users` (`user_id`))\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py\", line 1969, in _exec_single_context\n    self.dialect.do_execute(\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/engine/default.py\", line 922, in do_execute\n    cursor.execute(statement, parameters)\n  File \"/home/jangam/.local/lib/python3.10/site-packages/mysql/connector/cursor_cext.py\", line 330, in execute\n    result = self._cnx.cmd_query(\n  File \"/home/jangam/.local/lib/python3.10/site-packages/mysql/connector/opentelemetry/context_propagation.py\", line 77, in wrapper\n    return method(cnx, *args, **kwargs)\n  File \"/home/jangam/.local/lib/python3.10/site-packages/mysql/connector/connection_cext.py\", line 647, in cmd_query\n    raise get_mysql_exception(\nmysql.connector.errors.IntegrityError: 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`testdb`.`user_contacts`, CONSTRAINT `user_contacts_ibfk_2` FOREIGN KEY (`contact_of`) REFERENCES `users` (`user_id`))\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/home/jangam/Desktop/Project/Fun-Chat/backend/database.py\", line 75, in create_user_contact\n    session.commit()\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py\", line 1969, in commit\n    trans.commit(_to_root=True)\n  File \"<string>\", line 2, in commit\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/orm/state_changes.py\", line 139, in _go\n    ret_value = fn(self, *arg, **kw)\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py\", line 1256, in commit\n    self._prepare_impl()\n  File \"<string>\", line 2, in _prepare_impl\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/orm/state_changes.py\", line 139, in _go\n    ret_value = fn(self, *arg, **kw)\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py\", line 1231, in _prepare_impl\n    self.session.flush()\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py\", line 4312, in flush\n    self._flush(objects)\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py\", line 4447, in _flush\n    with util.safe_reraise():\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py\", line 146, in __exit__\n    raise exc_value.with_traceback(exc_tb)\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py\", line 4408, in _flush\n    flush_context.execute()\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/orm/unitofwork.py\", line 466, in execute\n    rec.execute(self)\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/orm/unitofwork.py\", line 642, in execute\n    util.preloaded.orm_persistence.save_obj(\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/orm/persistence.py\", line 93, in save_obj\n    _emit_insert_statements(\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/orm/persistence.py\", line 1227, in _emit_insert_statements\n    result = connection.execute(\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py\", line 1416, in execute\n    return meth(\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/sql/elements.py\", line 517, in _execute_on_connection\n    return connection._execute_clauseelement(\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py\", line 1639, in _execute_clauseelement\n    ret = self._execute_context(\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py\", line 1848, in _execute_context\n    return self._exec_single_context(\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py\", line 1988, in _exec_single_context\n    self._handle_dbapi_exception(\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py\", line 2344, in _handle_dbapi_exception\n    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py\", line 1969, in _exec_single_context\n    self.dialect.do_execute(\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/engine/default.py\", line 922, in do_execute\n    cursor.execute(statement, parameters)\n  File \"/home/jangam/.local/lib/python3.10/site-packages/mysql/connector/cursor_cext.py\", line 330, in execute\n    result = self._cnx.cmd_query(\n  File \"/home/jangam/.local/lib/python3.10/site-packages/mysql/connector/opentelemetry/context_propagation.py\", line 77, in wrapper\n    return method(cnx, *args, **kwargs)\n  File \"/home/jangam/.local/lib/python3.10/site-packages/mysql/connector/connection_cext.py\", line 647, in cmd_query\n    raise get_mysql_exception(\nsqlalchemy.exc.IntegrityError: (mysql.connector.errors.IntegrityError) 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`testdb`.`user_contacts`, CONSTRAINT `user_contacts_ibfk_2` FOREIGN KEY (`contact_of`) REFERENCES `users` (`user_id`))\n[SQL: INSERT INTO user_contacts (user_id, nickname, contact_number, status, contact_of, timestamp) VALUES (%(user_id)s, %(nickname)s, %(contact_number)s, %(status)s, %(contact_of)s, now())]\n[parameters: {'user_id': '9705407925', 'nickname': 'Dummy', 'contact_number': '8472649878', 'status': None, 'contact_of': '8472649878'}]\n(Background on this error at: https://sqlalche.me/e/20/gkpj)\n"
+}
+{
+  "svrty": "ISSUE",
+  "family": "pubsub",
+  "tracker_id": "316c669d-b7d5-4996-857e-e134f6454235",
+  "time_stamp": "2024-01-06 15:0205",
+  "err_msg": "Failed to create user contact.",
+  "filename": "/home/jangam/Desktop/Project/Fun-Chat/backend/database.py",
+  "lineno": 80,
+  "Exception": "Traceback (most recent call last):\n  File \"/home/jangam/.local/lib/python3.10/site-packages/mysql/connector/connection_cext.py\", line 639, in cmd_query\n    self._cmysql.query(\n_mysql_connector.MySQLInterfaceError: Cannot add or update a child row: a foreign key constraint fails (`testdb`.`user_contacts`, CONSTRAINT `user_contacts_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`))\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py\", line 1969, in _exec_single_context\n    self.dialect.do_execute(\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/engine/default.py\", line 922, in do_execute\n    cursor.execute(statement, parameters)\n  File \"/home/jangam/.local/lib/python3.10/site-packages/mysql/connector/cursor_cext.py\", line 330, in execute\n    result = self._cnx.cmd_query(\n  File \"/home/jangam/.local/lib/python3.10/site-packages/mysql/connector/opentelemetry/context_propagation.py\", line 77, in wrapper\n    return method(cnx, *args, **kwargs)\n  File \"/home/jangam/.local/lib/python3.10/site-packages/mysql/connector/connection_cext.py\", line 647, in cmd_query\n    raise get_mysql_exception(\nmysql.connector.errors.IntegrityError: 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`testdb`.`user_contacts`, CONSTRAINT `user_contacts_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`))\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/home/jangam/Desktop/Project/Fun-Chat/backend/database.py\", line 75, in create_user_contact\n    session.commit()\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py\", line 1969, in commit\n    trans.commit(_to_root=True)\n  File \"<string>\", line 2, in commit\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/orm/state_changes.py\", line 139, in _go\n    ret_value = fn(self, *arg, **kw)\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py\", line 1256, in commit\n    self._prepare_impl()\n  File \"<string>\", line 2, in _prepare_impl\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/orm/state_changes.py\", line 139, in _go\n    ret_value = fn(self, *arg, **kw)\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py\", line 1231, in _prepare_impl\n    self.session.flush()\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py\", line 4312, in flush\n    self._flush(objects)\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py\", line 4447, in _flush\n    with util.safe_reraise():\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py\", line 146, in __exit__\n    raise exc_value.with_traceback(exc_tb)\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/orm/session.py\", line 4408, in _flush\n    flush_context.execute()\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/orm/unitofwork.py\", line 466, in execute\n    rec.execute(self)\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/orm/unitofwork.py\", line 642, in execute\n    util.preloaded.orm_persistence.save_obj(\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/orm/persistence.py\", line 93, in save_obj\n    _emit_insert_statements(\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/orm/persistence.py\", line 1227, in _emit_insert_statements\n    result = connection.execute(\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py\", line 1416, in execute\n    return meth(\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/sql/elements.py\", line 517, in _execute_on_connection\n    return connection._execute_clauseelement(\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py\", line 1639, in _execute_clauseelement\n    ret = self._execute_context(\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py\", line 1848, in _execute_context\n    return self._exec_single_context(\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py\", line 1988, in _exec_single_context\n    self._handle_dbapi_exception(\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py\", line 2344, in _handle_dbapi_exception\n    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py\", line 1969, in _exec_single_context\n    self.dialect.do_execute(\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/engine/default.py\", line 922, in do_execute\n    cursor.execute(statement, parameters)\n  File \"/home/jangam/.local/lib/python3.10/site-packages/mysql/connector/cursor_cext.py\", line 330, in execute\n    result = self._cnx.cmd_query(\n  File \"/home/jangam/.local/lib/python3.10/site-packages/mysql/connector/opentelemetry/context_propagation.py\", line 77, in wrapper\n    return method(cnx, *args, **kwargs)\n  File \"/home/jangam/.local/lib/python3.10/site-packages/mysql/connector/connection_cext.py\", line 647, in cmd_query\n    raise get_mysql_exception(\nsqlalchemy.exc.IntegrityError: (mysql.connector.errors.IntegrityError) 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`testdb`.`user_contacts`, CONSTRAINT `user_contacts_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`))\n[SQL: INSERT INTO user_contacts (user_id, nickname, contact_number, status, contact_of, timestamp) VALUES (%(user_id)s, %(nickname)s, %(contact_number)s, %(status)s, %(contact_of)s, now())]\n[parameters: {'user_id': '8794567257', 'nickname': '8794567257', 'contact_number': '9705407925', 'status': None, 'contact_of': '9705407925'}]\n(Background on this error at: https://sqlalche.me/e/20/gkpj)\n"
+}
+{
+  "svrty": "ISSUE",
+  "family": "pubsub",
+  "tracker_id": "fa1804d8-f46d-4e75-a1f2-b4628166b73e",
+  "time_stamp": "2024-01-06 15:0405",
+  "err_msg": "Something went wrong",
+  "filename": "/home/jangam/Desktop/Project/Fun-Chat/backend/app.py",
+  "lineno": 198,
+  "Exception": "Traceback (most recent call last):\n  File \"/home/jangam/Desktop/Project/Fun-Chat/backend/app.py\", line 166, in handle_incoming_requests_from_client\n    resp[\"data\"] = await add_contact(user_id, req_body)\n  File \"/home/jangam/Desktop/Project/Fun-Chat/backend/app.py\", line 111, in add_contact\n    return contact.details()\n  File \"/home/jangam/Desktop/Project/Fun-Chat/backend/models.py\", line 55, in details\n    \"user_id\": self.user_id,\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/orm/attributes.py\", line 566, in __get__\n    return self.impl.get(state, dict_)  # type: ignore[no-any-return]\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/orm/attributes.py\", line 1086, in get\n    value = self._fire_loader_callables(state, key, passive)\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/orm/attributes.py\", line 1116, in _fire_loader_callables\n    return state._load_expired(state, passive)\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/orm/state.py\", line 798, in _load_expired\n    self.manager.expired_attribute_loader(self, toload, passive)\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/orm/loading.py\", line 1584, in load_scalar_attributes\n    raise orm_exc.DetachedInstanceError(\nsqlalchemy.orm.exc.DetachedInstanceError: Instance <UserContacts at 0x7f6e343a9360> is not bound to a Session; attribute refresh operation cannot proceed (Background on this error at: https://sqlalche.me/e/20/bhk3)\n"
+}
+{
+  "svrty": "ISSUE",
+  "family": "pubsub",
+  "tracker_id": "cae40c54-1019-495d-b680-f886e3f575d3",
+  "time_stamp": "2024-01-06 15:2421",
+  "err_msg": "Something went wrong",
+  "filename": "/home/jangam/Desktop/Project/Fun-Chat/backend/app.py",
+  "lineno": 198,
+  "Exception": "Traceback (most recent call last):\n  File \"/home/jangam/Desktop/Project/Fun-Chat/backend/app.py\", line 184, in handle_incoming_requests_from_client\n    resp[\"data\"] = await handle_message(user_id, req_body)\n  File \"/home/jangam/Desktop/Project/Fun-Chat/backend/app.py\", line 131, in handle_message\n    \"data\": message.details(),\n  File \"/home/jangam/Desktop/Project/Fun-Chat/backend/models.py\", line 126, in details\n    \"message_id\": self.message_id,\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/orm/attributes.py\", line 566, in __get__\n    return self.impl.get(state, dict_)  # type: ignore[no-any-return]\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/orm/attributes.py\", line 1086, in get\n    value = self._fire_loader_callables(state, key, passive)\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/orm/attributes.py\", line 1116, in _fire_loader_callables\n    return state._load_expired(state, passive)\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/orm/state.py\", line 798, in _load_expired\n    self.manager.expired_attribute_loader(self, toload, passive)\n  File \"/home/jangam/.local/lib/python3.10/site-packages/sqlalchemy/orm/loading.py\", line 1584, in load_scalar_attributes\n    raise orm_exc.DetachedInstanceError(\nsqlalchemy.orm.exc.DetachedInstanceError: Instance <Messages at 0x7f363fa47250> is not bound to a Session; attribute refresh operation cannot proceed (Background on this error at: https://sqlalche.me/e/20/bhk3)\n"
+}
+{
+  "svrty": "ISSUE",
+  "family": "pubsub",
+  "tracker_id": "83083018-45b6-488f-9a2a-26e85b1f332e",
+  "time_stamp": "2024-01-06 15:3101",
+  "err_msg": "Error processing connection",
+  "filename": "/home/jangam/Desktop/Project/Fun-Chat/backend/app.py",
+  "lineno": 244,
+  "Exception": "Traceback (most recent call last):\n  File \"/home/jangam/Desktop/Project/Fun-Chat/backend/app.py\", line 221, in handle_connection\n    user = await login(req_body)\n  File \"/home/jangam/Desktop/Project/Fun-Chat/backend/app.py\", line 70, in login\n    if is_invalid_password(user.password, password):\nAttributeError: 'NoneType' object has no attribute 'password'\n"
+}
+{
+  "svrty": "ISSUE",
+  "family": "pubsub",
+  "tracker_id": "dc224fc5-1e52-47a7-986c-4d68178975dc",
+  "time_stamp": "2024-01-06 15:3145",
+  "err_msg": "Error processing connection",
+  "filename": "/home/jangam/Desktop/Project/Fun-Chat/backend/app.py",
+  "lineno": 244,
+  "Exception": "Traceback (most recent call last):\n  File \"/home/jangam/Desktop/Project/Fun-Chat/backend/app.py\", line 221, in handle_connection\n    user = await login(req_body)\n  File \"/home/jangam/Desktop/Project/Fun-Chat/backend/app.py\", line 70, in login\n    if is_invalid_password(user.password, password):\nAttributeError: 'NoneType' object has no attribute 'password'\n"
+}
+{
+  "svrty": "ISSUE",
+  "family": "pubsub",
+  "tracker_id": "082bf2fb-1ba3-4388-a94c-e31e38fc06d9",
+  "time_stamp": "2024-01-06 15:3857",
+  "err_msg": "Error processing connection",
+  "filename": "/home/jangam/Desktop/Project/Fun-Chat/backend/app.py",
+  "lineno": 244,
+  "Exception": "Traceback (most recent call last):\n  File \"/home/jangam/Desktop/Project/Fun-Chat/backend/app.py\", line 221, in handle_connection\n    user = await login(req_body)\n  File \"/home/jangam/Desktop/Project/Fun-Chat/backend/app.py\", line 70, in login\n    if is_invalid_password(user.password, password):\nAttributeError: 'NoneType' object has no attribute 'password'\n"
+}
+{
+  "svrty": "ISSUE",
+  "family": "pubsub",
+  "tracker_id": "6036e343-7c47-4e1a-9180-efeffd396ce3",
+  "time_stamp": "2024-01-06 15:3904",
+  "err_msg": "Error processing connection",
+  "filename": "/home/jangam/Desktop/Project/Fun-Chat/backend/app.py",
+  "lineno": 244,
+  "Exception": "Traceback (most recent call last):\n  File \"/home/jangam/Desktop/Project/Fun-Chat/backend/app.py\", line 221, in handle_connection\n    user = await login(req_body)\n  File \"/home/jangam/Desktop/Project/Fun-Chat/backend/app.py\", line 70, in login\n    if is_invalid_password(user.password, password):\nAttributeError: 'NoneType' object has no attribute 'password'\n"
+}
+{
+  "svrty": "ISSUE",
+  "family": "pubsub",
+  "tracker_id": "d3436047-fd3f-41b6-b23b-2f4c84b957fe",
+  "time_stamp": "2024-01-06 16:2419",
+  "err_msg": "Error processing connection",
+  "filename": "/home/jangam/Desktop/Project/Fun-Chat/backend/app.py",
+  "lineno": 244,
+  "Exception": "Traceback (most recent call last):\n  File \"/home/jangam/Desktop/Project/Fun-Chat/backend/app.py\", line 221, in handle_connection\n    user = await login(req_body)\n  File \"/home/jangam/Desktop/Project/Fun-Chat/backend/app.py\", line 70, in login\n    if is_invalid_password(user.password, password):\nAttributeError: 'NoneType' object has no attribute 'password'\n"
+}
+{
+  "svrty": "ISSUE",
+  "family": "pubsub",
+  "tracker_id": "997c60cb-dca6-4e0c-bccd-4bd0bf70c1cb",
+  "time_stamp": "2024-01-06 16:2429",
+  "err_msg": "Error processing connection",
+  "filename": "/home/jangam/Desktop/Project/Fun-Chat/backend/app.py",
+  "lineno": 244,
+  "Exception": "Traceback (most recent call last):\n  File \"/home/jangam/Desktop/Project/Fun-Chat/backend/app.py\", line 221, in handle_connection\n    user = await login(req_body)\n  File \"/home/jangam/Desktop/Project/Fun-Chat/backend/app.py\", line 70, in login\n    if is_invalid_password(user.password, password):\nAttributeError: 'NoneType' object has no attribute 'password'\n"
+}
+{
+  "svrty": "INFO",
+  "family": "pubsub",
+  "tracker_id": "ce0525e1-f05a-4ca3-88eb-408f3834818e",
+  "time_stamp": "2024-01-06 16:2450",
+  "err_msg": "Invalid password",
+  "filename": "/home/jangam/Desktop/Project/Fun-Chat/backend/app.py",
+  "lineno": 71,
+  "Exception": null
+}

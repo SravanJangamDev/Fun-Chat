@@ -37,3 +37,56 @@ mainchat:
             "send_to_grps": []
         }
 
+
+********* Tables***********
+users = {
+    "user_id": 1,
+    "phone_number": "9705407925",
+    "firstname": "Jangam",
+    "lastname": "Sravan",
+    "displayname": "Sravan",
+    "displaypicture": "https://image.png",
+    "email": "jangamsravan607@gmail.com",
+    "caption": "",
+    "password": "Sravan123455",
+    "status": "",
+}
+
+user_contacts = {
+    "contact_id": 1
+    "user_id": 1,
+    "nickname": "Bindu,
+    "contact_number": "7234738487",
+    "status": "",
+    "contact_of": "",
+
+    primary key -> (user_id, contact_number)
+}
+
+chat_group = {
+    "group_id": "",
+    "name": Bindu,
+    "profile_image": "",
+    "caption": "",
+    "created_by": "",
+    "status": "",
+    "timestamp": "",
+}
+
+user_groups = {
+    "group_id": "",
+    "user_id": "",
+    "access_level": "",
+    "joined_on": "",
+    "status": "",
+}
+
+messages = {
+    "message_id": 1
+    "message_text": "20 20 adali ika",
+    "message_media_filename": "",
+    "sent_by": 1,
+    "sent_to": 2,
+    "timestamp": "",
+    "status": "delected|edited"
+}

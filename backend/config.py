@@ -1,7 +1,10 @@
-PUBSUB_BASEDIR = "/home/jangam/Desktop/Project/Fun-Chat/db"
-PUBSUB_MAILBOX = f"{PUBSUB_BASEDIR}/mailbox"
-PUBSUB_SUBDIR = f"{PUBSUB_BASEDIR}/subscriptionbox"
-PUBSUB_DEBUG_MODE = True
-PUBSUB_ERROR_LOG = f"{PUBSUB_BASEDIR}/.log.json"
-PUBSUB_HOST = "127.0.0.1"
-PUBSUB_PORT = 3000
+DEBUG_MODE = True
+ERROR_LOG = ".log.json"
+APP_HOST = "127.0.0.1"
+APP_PORT = 8500
+MYSQL_USERNAME = "root"
+MYSQL_PASSWORD = "Sravan123@"
+MYSQL_HOST = "localhost"
+MYSQL_PORT = 3306
+MYSQL_DBNAME = "testdb"
+MYSQL_DEBUG_MODE = False
