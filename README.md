@@ -5,25 +5,25 @@ Fun-Chat App is a chat software designed for seamless communication. It is imple
 
 ## Technologies Used
   ### Backend:
-    - Python Websockets
-    * MySQL Database
-    + SQLAlchemy ORM
+  - Python Websockets
+  * MySQL Database
+  + SQLAlchemy ORM
 
   ### Frontend:
-    - HTML
-    * CSS
-    + JavaScript
+  - HTML
+  * CSS
+  + JavaScript
 
 ## Supported Features
   ### 1. Individual Chats:
-    Engage in private conversations with individual contacts.
+  - Engage in private conversations with individual contacts.
   ### 2. Group Chats:
-    Create and participate in group chats for collaborative discussions.
+  - Create and participate in group chats for collaborative discussions.
   ### 3. Add Contact:
-    Easily add new contacts to expand your network.
+  - Easily add new contacts to expand your network.
   ### 4. Block Contact:
-    Manage your contacts by blocking unwanted communication.
+  - Manage your contacts by blocking unwanted communication.
   ### 5. Get Chat Messages:
-    Retrieve chat messages for a comprehensive view of your conversations.
+  - Retrieve chat messages for a comprehensive view of your conversations.
   ### 6. Send Messages:
-    Send messages in real time to stay connected with your contacts.
+  - Send messages in real-time to stay connected with your contacts.
