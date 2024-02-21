@@ -44,7 +44,8 @@ Fun-Chat App is a chat software designed for seamless communication. It is imple
     - [Reference Doc](https://ubuntu.com/server/docs/databases-mysql).
   
   - Update config file.
-    `Example:
+    ```
+    Example:
       DEBUG_MODE = True
       ERROR_LOG = ""
       APP_HOST = "127.0.0.1"
@@ -54,7 +55,8 @@ Fun-Chat App is a chat software designed for seamless communication. It is imple
       MYSQL_HOST = "localhost"
       MYSQL_PORT = 3306
       MYSQL_DBNAME = "Your DB name"
-      MYSQL_DEBUG_MODE = False`
+      MYSQL_DEBUG_MODE = False
+    ```
 
   - Run the backend server.
     python app.py
